@@ -17,6 +17,12 @@ const token = process.env.TELEGRAM_BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 //end constants
 
+
+import { BotCommandScope } from "node-telegram-bot-api";
+
+const scope: BotCommandScope = { type: "all_private_chats" }
+const commandsset = bot.setMyCommands([], { scope: scope });
+
 //todo: setup bot "/start" event handler. It should add the user to the users database and then tell the
 //todo: user the instructions
 startEventHandlers(bot);
